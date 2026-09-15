@@ -1,9 +1,7 @@
------
-
+---
 name: map-mcp-diagnosis-skill
-
 description: This is what Coworker matches against the user's message to decide whether to apply the skill. Get it wrong and nothing else here runs. Use whenever someone asks about browse abandonment, drop-off, lost demand or falling conversion on a NORDVELL product; asks why shoppers are leaving a product page; asks whether to discount, promote, mark down or run an offer on a product; or asks what to do about a product that is underperforming. Also applies to follow-up questions in the same conversation, such as asking for a discount after a diagnosis, or asking the agent to act on what it found. **Why it is worded like that.** The demo asks three questions in sequence: 1. *"Browse abandonment on the Aurora Parka is running about 3x normal. Can you check what's going on?"* 2. *"Let's put a discount on it to win those shoppers back."* 3. *"Do what you can."* Only the first mentions abandonment. **Questions 2 and 3 are follow-ups**, and question 2 is where the refusal happens - the primary wow moment. If the skill only fires on the word "abandonment", it will be inactive at the exact moment it matters most. Hence the explicit clause about discounts and about follow-ups. To use ONLY when the mcp server MAP_I_DIAGNOSIS_MCP_V1 is invoked.
------
+---
 
 ## Instructions
 
@@ -63,5 +61,3 @@ Hard rules:
 - Never recommend a discount the tool advised against.
 - If the tool returns an error, show it and say what you need. Do not answer anyway.
 ```
-
-
