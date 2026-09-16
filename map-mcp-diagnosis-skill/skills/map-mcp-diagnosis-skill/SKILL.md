@@ -39,8 +39,8 @@ When the user asks why a product's browse abandonment is high, or whether to dis
 
 3. **REPORT THE DIAGNOSIS - AND ONLY THE DIAGNOSIS.**
    - State the ROOT CAUSE and the confidence figure.
-   - List the EVIDENCE lines, and KEEP their `[CJA]`, `[INVENTORY]` and `[CONTEXT]` tags so the
-     user can see where each fact came from.
+   - List the EVIDENCE lines, and KEEP the "Source:" line under each one so the user can
+     see where every fact came from.
    - Quote the tool's numbers exactly. Do not round them or restate them from memory.
    - If there is an UPSTREAM FAULT, say plainly that it is not something you can fix,
      name the owner, and give the daily cost.
