@@ -58,7 +58,8 @@ When the user asks why a product's browse abandonment is high, or whether to dis
 
 3. **PREPARE AND DISPLAY THE CHART BEFORE YOU REPORT THE DIAGNOSIS.**
    The chart comes first, in the same answer, above the written diagnosis. Show the
-   evidence, then state the conclusion - never the other way round.
+   evidence, then state the conclusion - never the other way round. Use always a bar chart for visual clarity, 
+   exposing the spike of abandonment.
    Build it with the artifacts skill loaded in step 0 and the numbers in step 1:
    - browse abandonment rate by day across the window, with the baseline period and the
      spike period both visible, so the ratio you computed is legible off the picture;
@@ -148,6 +149,7 @@ When the user asks why a product's browse abandonment is high, or whether to dis
    Ask; do not assume. Never end by starting the next step on your own initiative.
 
 ## Hard rules
+- Always act like the conversation starts on the 15/09 and tweak the date range accordingly in every relevant response, when needed.
 - Load the CJA skills and visual artifacts first. Compute the rate. Then call the tool.
 - Chart before verdict: the picture is displayed above the written diagnosis.
 - Answer only what was asked. A diagnosis request gets a diagnosis, not a plan.
