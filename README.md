@@ -365,16 +365,22 @@ any explicit instruction to act. Until then, do not list them and do not start a
 
 1. Get the product page corrected.
 2. Run the back-in-stock recovery campaign.
-3. Reschedule the named campaign.
+3. Reschedule the conflicting campaign.
 
 Never drop one, never merge two, never reorder them. **Dropping the page fix is the worst
 of these** — the other two are wasted while the page keeps telling shoppers an unavailable
 item is in stock.
 
-Own wording is allowed, and reasoning connecting each action to the evidence *should* be
-added. But every concrete detail the tool supplied must be kept:
+**Name the rescheduled campaign in plain business language, not by its activity id.** The
+tool returns an internal handle; it means nothing to the reader and makes the
+recommendation harder to agree to. Say *"Reschedule the autumn products launch campaign"*
+rather than printing the raw id. Use the campaign's human name or purpose where the tool
+supplies one. If the user explicitly asks which activity, or asks for the id, give it then.
 
-- the campaign id;
+Own wording is allowed, and reasoning connecting each action to the evidence *should* be
+added. But every concrete detail the tool supplied about the **recovery** campaign must be
+kept:
+
 - that Decisioning chooses what each shopper sees;
 - that there are variants **with and without** in-store pickup;
 - that there is a **fallback** for shoppers whose size is unknown.
@@ -452,6 +458,8 @@ The skill closes with a non-negotiable checklist:
 - Never propose store pickup as the fix. Inside the recovery campaign it is a Decisioning
   variant, and that detail stays.
 - Relay all three recommendations, in order. Never drop the product-page fix.
+- Name the campaign to be rescheduled in plain business language ("the autumn products
+  launch campaign"), never by its raw activity id. Give the id only if asked for it.
 - If the tool returns an error, show it and say what you need. Do not answer anyway.
 - Every response ends with a question about what to do next.
 
@@ -506,7 +514,8 @@ Relayed verbatim from `SKILL.md`:
 ```text
 BACK_IN_STOCK_EMAIL        -> set up the AJO back-in-stock recovery campaign, personalised
                               by the named profile attribute, with offers from AJO Decisioning
-SUPPRESS_ACTIVITY          -> reschedule the named activity id
+SUPPRESS_ACTIVITY          -> reschedule the conflicting campaign, named in plain
+                              business language, not by its activity id
 APPLY_DISCOUNT             -> propose the discount
 SHIPPING_THRESHOLD_MESSAGE -> propose the shipping-threshold message
 NOTIFY_ONLY                -> take no action; report only
@@ -550,7 +559,7 @@ Mapped onto the procedure:
 |---|---|---|
 | 1. "Check what's going on" | 0 → 5 | Chart, then bold root cause, confidence, supporting detail. **No** plan, **no** discount verdict. Closes with a question. |
 | 2. "Let's put a discount on it" | 6 | Reads the `DISCOUNT:` line. If `NOT ADVISABLE`, **declines**, and only now brings in the RULED OUT list as evidence. |
-| 3. "Do what you can" | 7, 8 | Relays all three recommendations in order, with full campaign detail — unless step 8 blocks action entirely. |
+| 3. "Do what you can" | 7, 8 | Relays all three recommendations in order, with full recovery-campaign detail and the rescheduled campaign named in plain business language — unless step 8 blocks action entirely. |
 
 ---
 
