@@ -59,18 +59,42 @@ When the user asks why a product's browse abandonment is high, or whether to dis
 
 3. **PREPARE AND DISPLAY THE CHART BEFORE YOU REPORT THE DIAGNOSIS.**
    The chart comes first, in the same answer, above the written diagnosis. Show the
-   evidence, then state the conclusion - never the other way round. Use always a bar chart for visual clarity, 
-   exposing the spike of abandonment.
-   Build it with the artifacts skill loaded in step 0 and the numbers in step 1:
-   - browse abandonment rate by day across the window, with the baseline period and the
-     spike period both visible, so the ratio you computed is legible off the picture;
-   - where the tool returned a size breakdown, a second chart of demand share by size.
-   Chart ONLY measured or derived values - CJA figures, inventory stock figures, and
-   arithmetic on them. Nothing invented, no projections, no forecast lines.
+   evidence, then state the conclusion - never the other way round.
+
+   EXACTLY ONE CHART. ONE PER ANSWER, ONE PER CONVERSATION.
+   There is a single chart in this whole procedure and it is the one described below.
+   Do not produce a second chart of any kind, at any point, for any reason:
+   - no demand-share-by-size chart, even when the tool returns a size breakdown;
+   - no inventory or stock chart;
+   - no chart alongside the discount answer in rule 6;
+   - no chart alongside the recommended actions in rule 7;
+   - no revised, corrected, zoomed or "clearer" version of the chart you already showed.
+   Once the chart has been displayed, it is done. On every later turn in the session,
+   refer back to it in words. Do not redraw it and do not supplement it. A size
+   breakdown, an affected-session count or an inventory figure belongs in the SUPPORTING
+   DETAIL text of rule 5, as a line of prose - never as another picture.
+
+   THE CHART TO BUILD:
+   Build it with the artifacts skill loaded in step 0 and the numbers in step 1.
+   - Type: a BAR chart. Always. Never a line, area, pie or combo chart.
+   - Title: "<Product name> - Browse Abandonment by Day".
+   - X axis: Day, labelled by date across the window, one bar per day.
+   - Y axis: "Browse abandonment rate", shown as a percentage.
+   - One bar per day for the whole window, so the baseline run and the spike stand side
+     by side and the ratio you computed in step 1 is legible straight off the picture.
+   - Colour the bars by period and include a legend titled "Period" with exactly two
+     entries: "Baseline" and "Spike". The baseline days and the spike days must be
+     visually distinct from each other.
+   That is the entire chart specification. Do not add series, annotations, target lines,
+   averages, trend lines or secondary axes to it.
+
+   Chart ONLY measured or derived values - CJA figures and arithmetic on them. Nothing
+   invented, no projections, no forecast lines.
    The chart shows EVIDENCE, not the verdict. Do not title it with the root cause, do not
    annotate it with the discount answer, and do not put tool enum values on it.
    If the chart cannot be rendered, say so in one line and give the diagnosis anyway. A
-   missing chart delays the answer; it does not replace it.
+   missing chart delays the answer; it does not replace it. Do not retry it as a
+   different chart type.
 
 4. **BEFORE YOU REPORT ANYTHING, CHECK WHETHER THERE IS A FINDING AT ALL.**
    This test comes FIRST. It decides which of the two answers below you give, and it
@@ -240,6 +264,9 @@ When the user asks why a product's browse abandonment is high, or whether to dis
 - A ratio below 2.0 is NOT a finding. Say nothing is wrong and name no cause.
 - The root cause is the first line after the chart, in bold, alone. Never buried in prose.
 - Chart before verdict: the picture is displayed above the written diagnosis.
+- EXACTLY ONE chart per conversation: browse abandonment rate by day, as a bar chart,
+  with Baseline and Spike distinguished in a "Period" legend. Never a second chart of
+  any kind - not for sizes, not for inventory, not a redraw on a later turn.
 - Answer only what was asked. A diagnosis request gets a diagnosis, not a plan.
 - Say what the cause IS. What it is not belongs in the answer to a question about it.
 - Never follow up to the diagnosis with a question that mention the correct recommendation (for example, do not say "Should I apply the discount now?")

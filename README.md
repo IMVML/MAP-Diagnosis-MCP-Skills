@@ -265,19 +265,38 @@ without calling it.**
 The chart appears **in the same answer, above the written diagnosis**. Evidence first,
 conclusion second.
 
-- Always a **bar chart**, for visual clarity, exposing the abandonment spike.
-- Browse abandonment rate by day across the window, with both the **baseline period** and
-  the **spike period** visible, so the computed ratio is legible off the picture.
-- Where the tool returned a size breakdown, add a second chart of **demand share by size**.
+**Exactly one chart — one per answer, one per conversation.** There is a single chart in
+the whole procedure. No second chart of any kind, at any point:
+
+- no demand-share-by-size chart, even when the tool returns a size breakdown;
+- no inventory or stock chart;
+- no chart alongside the discount answer (step 6) or the recommended actions (step 7);
+- no revised, zoomed or "clearer" redraw of the chart already shown.
+
+Once displayed, the chart is done. Later turns refer back to it in words. A size
+breakdown, affected-session count or inventory figure belongs in the *Supporting detail*
+prose of step 5 — never as another picture.
+
+**The chart specification:**
+
+| Property | Value |
+|---|---|
+| Type | Bar chart. Always. Never line, area, pie or combo. |
+| Title | `<Product name> — Browse Abandonment by Day` |
+| X axis | Day, one bar per day across the window |
+| Y axis | Browse abandonment rate, as a percentage |
+| Series | One bar per day, so baseline run and spike stand side by side |
+| Legend | Titled `Period`, exactly two entries: `Baseline` and `Spike`, visually distinct |
 
 Constraints:
 
-- Chart **only** measured or derived values — CJA figures, inventory stock figures, and
-  arithmetic on them.
-- No invented values, no projections, no forecast lines.
+- Chart **only** measured or derived values — CJA figures and arithmetic on them.
+- No invented values, no projections, no forecast lines, no trend lines, no target lines,
+  no secondary axes, no extra series or annotations.
 - The chart shows **evidence, not the verdict**: do not title it with the root cause, do not
   annotate it with the discount answer, do not put tool enum values on it.
-- If the chart cannot be rendered, say so in one line and give the diagnosis anyway.
+- If the chart cannot be rendered, say so in one line and give the diagnosis anyway. Do not
+  retry it as a different chart type.
 </details>
 
 <details>
@@ -449,6 +468,9 @@ The skill closes with a non-negotiable checklist:
 - A ratio below **2.0** is **not** a finding. Say nothing is wrong and name no cause.
 - The root cause is the first line after the chart, in bold, alone. Never buried in prose.
 - **Chart before verdict**: the picture is displayed above the written diagnosis.
+- **Exactly one chart per conversation**: browse abandonment rate by day, as a bar chart,
+  with Baseline and Spike distinguished in a `Period` legend. Never a second chart of any
+  kind — not for sizes, not for inventory, not a redraw on a later turn.
 - Answer only what was asked. A diagnosis request gets a diagnosis, not a plan.
 - Say what the cause **is**. What it is *not* belongs in the answer to a question about it.
 - Never follow up a diagnosis with a question that mentions the correct recommendation
@@ -535,7 +557,8 @@ user.
 | Blocking root cause | `content_or_ux_fault` | Take no action of any kind, even if instructed. |
 | Discount verdicts | `DISCOUNT: ADVISABLE` / `DISCOUNT: NOT ADVISABLE` | The sole basis for any discount answer. |
 | Notional "today" | `15/09` | The agent always behaves as though the conversation starts on this date. |
-| Chart type | Bar chart | Always, for spike clarity. |
+| Chart type | Bar chart | Always, for spike clarity |
+| Chart count | `1` | Exactly one chart per conversation. Never a second. |
 
 ---
 
@@ -571,7 +594,8 @@ what's going on?"*
 **Agent (conforming):**
 
 ```
-[bar chart: browse abandonment rate by day, baseline and spike periods both visible]
+[bar chart: "Aurora Parka — Browse Abandonment by Day", rate % by day,
+ Period legend with Baseline and Spike]
 
 **Root cause: the product page is showing sizes as available that are actually out of stock**
 Shoppers are selecting a size, finding it unavailable at the next step, and leaving.
