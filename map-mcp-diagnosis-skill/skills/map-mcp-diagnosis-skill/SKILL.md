@@ -69,6 +69,9 @@ When the user asks why a product's browse abandonment is high, or whether to dis
    - no chart alongside the discount answer in rule 6;
    - no chart alongside the recommended actions in rule 7;
    - no revised, corrected, zoomed or "clearer" version of the chart you already showed.
+   Correcting the chart BEFORE you send it is not a second chart - that is just building
+   the one chart properly. The ban is on showing another one after the first has been
+   displayed.
    Once the chart has been displayed, it is done. On every later turn in the session,
    refer back to it in words. Do not redraw it and do not supplement it. A size
    breakdown, an affected-session count or an inventory figure belongs in the SUPPORTING
@@ -78,15 +81,34 @@ When the user asks why a product's browse abandonment is high, or whether to dis
    Build it with the artifacts skill loaded in step 0 and the numbers in step 1.
    - Type: a BAR chart. Always. Never a line, area, pie or combo chart.
    - Title: "<Product name> - Browse Abandonment by Day".
-   - X axis: Day, labelled by date across the window, one bar per day.
+   - X axis: Day. THE X AXIS IS CATEGORICAL, NOT A TIME AXIS.
+     Treat each day as a discrete category, not as a date or timestamp value. Pass the
+     days as plain text labels ("Sep 1", "Sep 2", ...), NOT as dates, and set the axis
+     scale to categorical / ordinal / band - never temporal, linear or continuous.
+     EXACTLY ONE TICK AND ONE LABEL PER DAY, in calendar order. The number of labels on
+     the axis must equal the number of bars. No date must ever appear twice.
+     If a day is repeated on the axis ("Sep 2  Sep 2"), the axis has been rendered as a
+     time scale and the renderer has interpolated ticks between the bars. Do not accept
+     it: rebuild the same chart with the days as text categories. Do not fix it by
+     hiding, rotating or thinning the labels - that hides the symptom and drops days.
+     Do not let the renderer choose the tick interval, and do not ask it for "nice"
+     or automatic ticks.
    - Y axis: "Browse abandonment rate", shown as a percentage.
    - One bar per day for the whole window, so the baseline run and the spike stand side
      by side and the ratio you computed in step 1 is legible straight off the picture.
+     Bars sit in the middle of their category slot and should be wide enough to read as
+     bars, not hairlines - a categorical axis gives this for free; a time axis does not.
    - Colour the bars by period and include a legend titled "Period" with exactly two
      entries: "Baseline" and "Spike". The baseline days and the spike days must be
      visually distinct from each other.
    That is the entire chart specification. Do not add series, annotations, target lines,
    averages, trend lines or secondary axes to it.
+
+   BEFORE YOU SEND THE ANSWER, CHECK THE AXIS:
+   count the labels on the X axis. If that count does not equal the number of days in
+   your window, or any label is duplicated, the chart is wrong. Rebuild it once, with
+   the days as categories. If it is still wrong, show it, say in one line that the day
+   axis is mislabelled, and continue with the diagnosis.
 
    Chart ONLY measured or derived values - CJA figures and arithmetic on them. Nothing
    invented, no projections, no forecast lines.

@@ -282,11 +282,19 @@ prose of step 5 — never as another picture.
 | Property | Value |
 |---|---|
 | Type | Bar chart. Always. Never line, area, pie or combo. |
-| Title | `<Product name> — Browse Abandonment by Day` |
-| X axis | Day, one bar per day across the window |
+| Title | `<Product> — Browse Abandonment by Day` |
+| X axis | **Day, as a categorical axis** — days passed as text labels (`Sep 1`, `Sep 2`…), scale set to categorical/ordinal/band, never temporal or continuous. Exactly one tick and one label per day, in calendar order. |
 | Y axis | Browse abandonment rate, as a percentage |
 | Series | One bar per day, so baseline run and spike stand side by side |
 | Legend | Titled `Period`, exactly two entries: `Baseline` and `Spike`, visually distinct |
+
+**Axis check before sending:** the number of X-axis labels must equal the number of days in
+the window, with no duplicates. A repeated label (`Sep 2  Sep 2`) means the axis was
+rendered as a *time scale* and the renderer interpolated ticks between the bars — the same
+fault that produces hairline-thin bars. The fix is to rebuild with days as text categories,
+**not** to hide, rotate or thin the labels, which masks the symptom and drops days.
+Correcting the chart before sending is not a "second chart"; the one-chart rule bans
+redrawing it *after* it has been displayed.
 
 Constraints:
 
